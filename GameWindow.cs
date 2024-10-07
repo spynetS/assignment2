@@ -1,33 +1,40 @@
 public class GameWindow
 {
-	public void Render(GameBoard board){
+	public void Render(GameBoard board, Disk player){
 		for(int y = 0; y < 8; y ++){
 			for(int x = 0; x < 8; x ++){
 				switch(board.matrix[x][y]){
 					case Disk.EMPTY:
-						Console.ForegroundColor = ConsoleColor.White;
-						Console.Write("|"+x+","+y+ "|");
+						Console.ForegroundColor = ConsoleColor.Black;
+						Console.BackgroundColor = ConsoleColor.Green;
+						if(board.IsValidMove(new Position(x,y),player)){
+							Console.Write("|"+x+","+y+ "");
+						}
+						else{
+							Console.Write("|   ");
+						}
 						break;
 					case Disk.WHITE:
-						Console.ForegroundColor = ConsoleColor.White;
+						Console.ForegroundColor = ConsoleColor.Black;
 						Console.Write("|");
-						Console.ForegroundColor = ConsoleColor.Red;
-						Console.Write(" # ");
 						Console.ForegroundColor = ConsoleColor.White;
-						Console.Write("|");
+						Console.Write("(@)");
+						Console.ForegroundColor = ConsoleColor.Black;
+						Console.Write("");
 						break;
 					case Disk.BLACK:
-						Console.ForegroundColor = ConsoleColor.White;
+						Console.ForegroundColor = ConsoleColor.Black;
 						Console.Write("|");
-						Console.ForegroundColor = ConsoleColor.Blue;
-						Console.Write(" # ");
-						Console.ForegroundColor = ConsoleColor.White;
-						Console.Write("|");
+						Console.Write("(@)");
+						Console.Write("");
 						break;
 				}
 			}
-			Console.WriteLine("");
+			Console.Write("|\n");
+			Console.WriteLine("+---+---+---+---+---+---+---+---+");
 		}
+						Console.BackgroundColor = ConsoleColor.Black;
+						Console.ForegroundColor = ConsoleColor.White;
 	}
 
 }

@@ -15,5 +15,5 @@ public abstract class Player
 
 
     /// <summary>Returns the index of the 8x8 matrix the player wants to move to</summary>
-    public abstract Position RequestMove(GameBoard board);
+    public abstract Position RequestMove(GameBoard board, List<Position> validMoves);
 }

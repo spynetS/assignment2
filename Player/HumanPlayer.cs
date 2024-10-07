@@ -9,7 +9,7 @@ public class HumanPlayer : Player
     {
     }
 
-    public override Position RequestMove(GameBoard board)
+    public override Position RequestMove(GameBoard board, List<Position> validMoves)
     {
 		Position position;
 		do{
@@ -20,7 +20,7 @@ public class HumanPlayer : Player
 			int y = int.Parse(input.Split(" ")[1]);
 			position = new Position(x,y);
 		}
-		while(!board.IsValidMove(position));
+		while(!board.IsValidMove(position,disk));
 		return position;
     }
 
